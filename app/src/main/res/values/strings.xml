@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Time Capsule</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Time Capsule Map</string>
 </resources>

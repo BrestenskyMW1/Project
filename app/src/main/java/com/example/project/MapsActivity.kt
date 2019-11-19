@@ -43,9 +43,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun getLocation(){
-        //var lLatitude = 0.0;
-        //var lLongitude = 0.0;
-        /*fusedLocationClient.lastLocation
+        var lLatitude = 0.0;
+        var lLongitude = 0.0;
+        fusedLocationClient.lastLocation
             .addOnSuccessListener { location : Location? ->
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
@@ -56,10 +56,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 mMap.addMarker(MarkerOptions().position(onTheMap).title("You are Here"))
                 val zoomLevel = 19.0f //This goes up to 21
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(onTheMap, zoomLevel))
-            }*/
+            }
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        //val sydney = LatLng(-34.0, 151.0)
+        //mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 }
