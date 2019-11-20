@@ -1,24 +1,18 @@
 package com.example.project
 
-import android.Manifest
-import android.location.Location
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import java.util.*
-import kotlin.concurrent.schedule
+import android.provider.AlarmClock.EXTRA_MESSAGE
+import android.view.View
+import androidx.drawerlayout.widget.DrawerLayout
+import android.widget.Button
+import android.widget.EditText
+
 
 class MainActivity : AppCompatActivity(){
-
-
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var mBtLaunchActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,4 +20,12 @@ class MainActivity : AppCompatActivity(){
 
     }
 
+    fun sendMessage(view: View) {
+        // Do something in response to button
+        val message = ""
+        val intent = Intent(this, MapsActivity::class.java).apply {
+            putExtra(EXTRA_MESSAGE, message)
+        }
+        startActivity(intent)
+    }
 }
