@@ -3,14 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MinigameActivity">
+        android:orientation="horizontal">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="30sp"
+            android:layout_weight="1"
+            android:text="@string/minigame_text"
+            android:textAlignment="center"
+            android:textSize="24sp"></TextView>
+
+
+    </LinearLayout>
+
+
 </layout>
