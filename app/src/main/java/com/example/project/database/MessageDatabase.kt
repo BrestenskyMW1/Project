@@ -36,7 +36,7 @@ abstract class MessageDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                             context.applicationContext,
                             MessageDatabase::class.java,
-                            "sleep_history_database"
+                            "messages"
                     )
                             .fallbackToDestructiveMigration()
                             .build()

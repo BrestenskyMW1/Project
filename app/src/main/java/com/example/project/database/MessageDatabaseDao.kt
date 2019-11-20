@@ -25,22 +25,16 @@ import androidx.room.Update
 @Dao
 interface MessageDatabaseDao {
     @Insert
-    fun insert(night: MessageStore)
+    fun insert(message: MessageStore)
 
     @Update
-    fun update(night: MessageStore)
+    fun update(message: MessageStore)
 
-    @Query("SELECT * from daily_sleep_quality_table WHERE nightId = :key")
-    fun get(key: Long): MessageStore?
-
-    @Query("DELETE FROM daily_sleep_quality_table")
+    @Query("DELETE FROM messages")
     fun clear()
 
-    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC LIMIT 1")
-    fun getTonight(): MessageStore?
-
-    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC")
-    fun getAllNights(): LiveData<List<MessageStore>>
+    @Query("SELECT * FROM messages ORDER BY date DESC")
+    fun getAllMessages(): LiveData<List<MessageStore>>
 
 
 }
