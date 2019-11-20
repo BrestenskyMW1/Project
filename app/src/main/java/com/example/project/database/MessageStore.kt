@@ -19,19 +19,20 @@ package com.example.android.trackmysleepquality.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
-@Entity(tableName = "daily_sleep_quality_table")
+@Entity(tableName = "messages")
 data class MessageStore(
-        @PrimaryKey(autoGenerate = true)
-        var nightId: Long = 0L,
+        @PrimaryKey(autoGenerate = false)
+        var message: String = "",
 
-        @ColumnInfo(name = "start_time_milli")
-        val startTimeMilli: Long = System.currentTimeMillis(),
+        @ColumnInfo(name = "date")
+        val date: Date = Date(0,1,1),
 
-        @ColumnInfo(name = "end_time_milli")
-        var endTimeMilli: Long = startTimeMilli,
+        @ColumnInfo(name = "latitude")
+        var latitude: Double = 0.0,
 
-        @ColumnInfo(name = "quality_rating")
-        var sleepQuality: Int = -1
+        @ColumnInfo(name = "longitude")
+        var longitude: Double = 0.0
 
 )
