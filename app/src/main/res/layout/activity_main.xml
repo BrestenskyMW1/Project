@@ -12,13 +12,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <fragment
-                android:id="@+id/myNavHostFragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+            <Button
+                android:id="@+id/mapButton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:navGraph="@navigation/navigation"
-                app:defaultNavHost="true" />
+                android:layout_height="wrap_content"
+                android:onClick="sendMessage"
+                android:text="@string/map_button_text" />
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
