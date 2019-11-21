@@ -24,8 +24,15 @@ class MainActivity : AppCompatActivity(){
         // Do something in response to button
         val message = ""
         val intent = Intent(this, MapsActivity::class.java).apply {
-            putExtra(EXTRA_MESSAGE, message)
-        }
+            putExtra(EXTRA_MESSAGE, message) }
         startActivity(intent)
     }
+
+    fun toGame(view: View) {
+        val message = ""
+        val intent = Intent(this, MinigameActivity::class.java).apply {
+            putExtra(EXTRA_MESSAGE, message) }
+        startActivity(intent)
+    }
+
 }
