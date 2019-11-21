@@ -23,6 +23,63 @@
                 android:layout_height="wrap_content"
                 android:onClick="toGame"
                 android:text="@string/game_button_text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#007A7A7A"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="20dp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#D6D6D6"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="11/20/2019"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EBEBEB"
+                    android:text="Man I wish we had android today :/"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="20dp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#D6D6D6"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="11/19/2019"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EBEBEB"
+                    android:text="Wow I love Dr. Hutchin's android class :D"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
