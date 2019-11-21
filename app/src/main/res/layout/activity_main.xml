@@ -24,6 +24,21 @@
                 android:onClick="toGame"
                 android:text="@string/game_button_text" />
 
+            <EditText
+                android:id="@+id/Message_Entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/temp_text" />
+
+            <Button
+                android:id="@+id/MessageSave"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit_button" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
