@@ -16,4 +16,12 @@
     <string name="minigame_text">Let the Games Begin!</string>
     <string name="temp_text">Enter New Message</string>
     <string name="submit_button">Submit</string>
+    <string name="title_activity_bottom_nav">BottomNav</string>
+    <string name="navigation_text_view">MSGs</string>
+    <string name="navigation_map_view">Map</string>
+    <string name="navigation_game_text">Game</string>
+    <string name="example_entry_text_1">Wow I love Dr. Hutchin\'s android class :D</string>
+    <string name="example_entry_text_2">Man I wish we had android today :/</string>
+    <string name="example_entry_date_1">11/19/2019</string>
+    <string name="example_entry_date_2">11/20/2019</string>
 </resources>

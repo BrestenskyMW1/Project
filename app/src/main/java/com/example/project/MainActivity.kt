@@ -3,36 +3,35 @@ package com.example.project
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
-import android.view.View
-import androidx.drawerlayout.widget.DrawerLayout
-import android.widget.Button
-import android.widget.EditText
+import android.view.MenuItem
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity(){
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var mBtLaunchActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val botNav : BottomNavigationView = findViewById(R.id.navigation)
+        botNav.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener{
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                when (item.getItemId()) {
+                    R.id.navigation_home -> {
+                    }
+                    R.id.navigation_map -> {
+                        val a = Intent(this@MainActivity, MapsActivity::class.java)
+                        startActivity(a)
+                    }
+                    R.id.navigation_game -> {
+                        val b = Intent(this@MainActivity, MinigameActivity::class.java)
+                        startActivity(b)
+                    }
+                }
+                return false
+            }
+        })
+        botNav.selectedItemId = R.id.navigation_home
 
-    }
-
-    fun sendMessage(view: View) {
-        // Do something in response to button
-        val message = ""
-        val intent = Intent(this, MapsActivity::class.java).apply {
-            putExtra(EXTRA_MESSAGE, message) }
-        startActivity(intent)
-    }
-
-    fun toGame(view: View) {
-        val message = ""
-        val intent = Intent(this, MinigameActivity::class.java).apply {
-            putExtra(EXTRA_MESSAGE, message) }
-        startActivity(intent)
     }
 
 }

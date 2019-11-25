@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/mapButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="sendMessage"
-                android:text="@string/map_button_text" />
-
-            <Button
-                android:id="@+id/gameButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="toGame"
-                android:text="@string/game_button_text" />
 
             <EditText
                 android:id="@+id/Message_Entry"
@@ -34,14 +17,14 @@
 
             <Button
                 android:id="@+id/MessageSave"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="@string/submit_button" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="576dp"
                 android:background="#007A7A7A"
                 android:orientation="vertical">
 
@@ -56,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:background="#D6D6D6"
                     android:fontFamily="sans-serif-smallcaps"
-                    android:text="11/20/2019"
+                    android:text="@string/example_entry_date_2"
                     android:textAlignment="textStart"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -66,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#EBEBEB"
-                    android:text="Man I wish we had android today :/"
+                    android:text="@string/example_entry_text_2"
                     android:textAlignment="textStart"
                     android:textSize="24sp" />
 
@@ -81,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:background="#D6D6D6"
                     android:fontFamily="sans-serif-smallcaps"
-                    android:text="11/19/2019"
+                    android:text="@string/example_entry_date_1"
                     android:textAlignment="textStart"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -91,18 +74,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#EBEBEB"
-                    android:text="Wow I love Dr. Hutchin's android class :D"
+                    android:text="@string/example_entry_text_1"
                     android:textAlignment="textStart"
                     android:textSize="24sp" />
+
             </LinearLayout>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="?android:attr/windowBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:menu="@menu/bottom_nav_menu" />
+
         </LinearLayout>
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/navigation_menu" />
-
-    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
