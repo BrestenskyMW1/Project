@@ -22,6 +22,7 @@ class MinigameActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_minigame)
         val botNav : BottomNavigationView = findViewById(R.id.navigation)
+        botNav.selectedItemId = R.id.navigation_game
         botNav.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener{
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.getItemId()) {
@@ -40,7 +41,6 @@ class MinigameActivity : AppCompatActivity() {
             }
         })
         botNav.selectedItemId = R.id.navigation_game
-        botNav.setSelectedItemId(R.id.navigation_game)
     }
 
     // This example shows an Activity, but you would use the same approach if
