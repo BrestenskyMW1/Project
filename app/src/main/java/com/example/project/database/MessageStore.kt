@@ -27,7 +27,7 @@ data class MessageStore(
         var message: String = "",
 
         @ColumnInfo(name = "date")
-        val date: Date = Date(0,1,1),
+        val date: Long = 0,
 
         @ColumnInfo(name = "latitude")
         var latitude: Double = 0.0,
