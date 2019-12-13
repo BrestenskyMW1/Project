@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity(){
 
         //create a new message
         subButton.setOnClickListener {
-            Toast.makeText(this@MainActivity, textEntry.text, Toast.LENGTH_SHORT).show()
-            msgViewModel.newMessage()
+            Toast.makeText(this@MainActivity, textEntry.getText().toString(), Toast.LENGTH_SHORT).show()
+            msgViewModel.newMessage(textEntry.getText().toString())
         }
 
         //delete all messages

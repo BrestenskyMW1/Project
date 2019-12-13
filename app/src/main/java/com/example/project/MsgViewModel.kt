@@ -28,7 +28,7 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
         }
     }
 
-    fun newMessage(){
+    fun newMessage(texty : String){
         uiScope.launch{
             val newMsg = MessageStore()
 
@@ -44,7 +44,8 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
             val longDate = format.parse(strDate).time
             newMsg.date = longDate
 
-            //get message???
+            //get message
+            newMsg.message = texty
 
             insert(newMsg)
 
