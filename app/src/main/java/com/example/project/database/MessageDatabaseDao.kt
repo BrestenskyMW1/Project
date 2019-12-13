@@ -36,5 +36,8 @@ interface MessageDatabaseDao {
     @Query("SELECT * FROM messages ORDER BY date DESC")
     fun getAllMessages(): LiveData<List<MessageStore>>
 
+    @Query("SELECT * FROM messages ORDER BY date DESC LIMIT 1")
+    fun getMessage(): MessageStore?
+
 
 }

@@ -24,10 +24,10 @@ import java.util.*
 @Entity(tableName = "messages")
 data class MessageStore(
         @PrimaryKey(autoGenerate = false)
-        var message: String = "",
+        var date: Long = 0,
 
-        @ColumnInfo(name = "date")
-        val date: Long = 0,
+        @ColumnInfo(name = "message")
+        var message: String = "",
 
         @ColumnInfo(name = "latitude")
         var latitude: Double = 0.0,

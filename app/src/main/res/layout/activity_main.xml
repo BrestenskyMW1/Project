@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="msgViewModel"
+            type= "com.example.project.MsgViewModel" />
+    </data>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,6 +28,14 @@
                 android:layout_gravity="center"
                 android:text="@string/submit_button" />
 
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Delete all Messages"
+                android:textAlignment="center" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="581dp"
@@ -33,50 +47,10 @@
                     android:layout_height="wrap_content"
                     android:minHeight="20dp" />
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#D6D6D6"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="@string/example_entry_date_2"
-                    android:textAlignment="textStart"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EBEBEB"
-                    android:text="@string/example_entry_text_2"
-                    android:textAlignment="textStart"
-                    android:textSize="24sp" />
-
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="20dp" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#D6D6D6"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="@string/example_entry_date_1"
-                    android:textAlignment="textStart"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EBEBEB"
-                    android:text="@string/example_entry_text_1"
-                    android:textAlignment="textStart"
-                    android:textSize="24sp" />
 
             </LinearLayout>
 
