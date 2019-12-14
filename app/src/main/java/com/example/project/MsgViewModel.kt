@@ -41,6 +41,9 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
     fun setLon(newVal : Double){
         msgLon = newVal
     }
+    fun getLat() : Double{
+        return msgLat
+    }
     fun newMessage(texty : String){
         uiScope.launch{
             val newMsg = MessageStore()
