@@ -1,11 +1,17 @@
 package com.example.project
 
 import android.app.Application
+import android.location.Location
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.android.trackmysleepquality.database.MessageDatabaseDao
 import com.example.android.trackmysleepquality.database.MessageStore
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -15,6 +21,8 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private var msg = MutableLiveData<MessageStore?>()
+    private var msgLat = 0.0
+    private var msgLon = 0.0
     //private val msgs = database.getAllMessages()
 
 
@@ -27,14 +35,19 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
             //msg.value =  database.getMessage()
         }
     }
-
+    fun setLat(newVal : Double){
+        msgLat = newVal
+    }
+    fun setLon(newVal : Double){
+        msgLon = newVal
+    }
     fun newMessage(texty : String){
         uiScope.launch{
             val newMsg = MessageStore()
 
             //get lat and long
-            newMsg.latitude = 0.0
-            newMsg.longitude = 0.0
+            newMsg.latitude = msgLat
+            newMsg.longitude = msgLon
 
             //date bs
             var time = System.currentTimeMillis()
