@@ -47,9 +47,9 @@ class MainActivity : AppCompatActivity(){
 
         //create a new message
         subButton.setOnClickListener {
-            //Toast.makeText(this@MainActivity, textEntry.getText().toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, textEntry.getText().toString(), Toast.LENGTH_SHORT).show()
             getLocation()
-            Toast.makeText(this@MainActivity, msgViewModel.getLat().toString(), Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this@MainActivity, msgViewModel.getLat().toString(), Toast.LENGTH_SHORT).show()
             msgViewModel.newMessage(textEntry.getText().toString())
         }
 
