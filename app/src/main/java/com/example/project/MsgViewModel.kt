@@ -28,7 +28,10 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
     private var msg = MutableLiveData<MessageStore?>()
     private var msgLat = 41.1553489
     private var msgLon = -80.0787486
-    //private val msgs = database.getAllMessages()
+    private val msgs = database.getAllMessages()
+    val msgsString = Transformations.map(msgs) { msgs ->
+        formatMessages(msgs, application.resources)
+    }
 
 
     init {
@@ -97,7 +100,7 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
         viewModelJob.cancel()
     }
 
-    fun formatNights(messages: List<MessageStore>, resources: Resources): Spanned {
+    fun formatMessages(messages: List<MessageStore>, resources: Resources): Spanned {
         val sb = StringBuilder()
         sb.apply {
             append(resources.getString(R.string.title))

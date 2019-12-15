@@ -40,10 +40,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="529dp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/messagesGoHere"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" />
+                    android:text="@{msgViewModel.msgsString}"
+                    android:textAlignment="center" />
             </ScrollView>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
