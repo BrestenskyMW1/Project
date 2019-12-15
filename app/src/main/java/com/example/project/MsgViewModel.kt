@@ -106,12 +106,12 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
             append(resources.getString(R.string.title))
             messages.forEach {
                 append("<br>")
-                append(resources.getString(R.string.example_message))
+                append("<h3>" + it.message + "</h3>")
                 val date = Date(it.date)
-                val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+                val format = SimpleDateFormat("MM.dd.yyyy HH:mm")
                 append("\t${format.format(date)}<br>")
-                append("\t" + resources.getString(R.string.example_lat)+
-                        resources.getString(R.string.example_long) + "<br>")
+                append("\t<b>Latitude: " + it.latitude + "</b><br>"+
+                        "<b> Longitude:"+ it.longitude + "</b><br>")
             }
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
