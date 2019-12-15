@@ -2,6 +2,7 @@ package com.example.project
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,22 +12,29 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.android.trackmysleepquality.database.MessageDatabase
 import com.example.project.databinding.ActivityMainBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var msgViewModel : MsgViewModel
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val application = requireNotNull(this).application
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val dataSource= MessageDatabase.getInstance(application).msgDatabaseDao
         val viewModelFactory= MsgViewModelFactory(dataSource, application)
-        val msgViewModel= ViewModelProviders.of(
+        msgViewModel= ViewModelProviders.of(
             this, viewModelFactory).get(MsgViewModel::class.java)
 
         val subButton = binding.MessageSave
@@ -39,7 +47,9 @@ class MainActivity : AppCompatActivity(){
 
         //create a new message
         subButton.setOnClickListener {
-            Toast.makeText(this@MainActivity, "message added", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, textEntry.getText().toString(), Toast.LENGTH_SHORT).show()
+            getLocation()
+            //Toast.makeText(this@MainActivity, msgViewModel.getLat().toString(), Toast.LENGTH_SHORT).show()
             msgViewModel.newMessage(textEntry.getText().toString())
         }
 
@@ -79,6 +89,16 @@ class MainActivity : AppCompatActivity(){
         })
         botNav.selectedItemId = R.id.navigation_home
 
+    }
+    fun getLocation(){
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    msgViewModel.setLat(location.getLatitude());
+                    msgViewModel.setLon(location.getLongitude());
+                }
+            }
     }
 
 }
