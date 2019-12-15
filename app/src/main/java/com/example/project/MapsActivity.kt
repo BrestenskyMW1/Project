@@ -23,27 +23,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-//import kotlin.concurrent.schedule
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var msgViewModel : MsgViewModel
-    //private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var locationManager : LocationManager? = null
-    //define the listener
-    private val locationListener: LocationListener = object : LocationListener {
-        override fun onLocationChanged(location: Location) {
-            var onTheMap = LatLng(location.latitude, location.longitude)
-            mMap.addMarker(MarkerOptions().position(onTheMap).title("You are Here").icon(
-                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
-            val zoomLevel = 19.0f //This goes up to 21
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(onTheMap, zoomLevel))
-        }
-        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
-        override fun onProviderEnabled(provider: String) {}
-        override fun onProviderDisabled(provider: String) {}
-    }
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val application = requireNotNull(this).application
@@ -53,19 +39,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val viewModelFactory= MsgViewModelFactory(dataSource, application)
         msgViewModel= ViewModelProviders.of(
             this, viewModelFactory).get(MsgViewModel::class.java)
-        msgViewModel.onRequestMessages()
-        //fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         //ask for permissions if not given
         val permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
         ActivityCompat.requestPermissions(this, permissions,0)
-        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
-        //getLocation()
-
-
-        /*Timer("LocationPing", false).schedule(500,500) {
-            getLocation()
-        }*/
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -97,36 +75,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    /*fun getLocation(){
+    fun getLocation() {
         var lLatitude = 0.0;
         var lLongitude = 0.0;
         fusedLocationClient.lastLocation
-            .addOnSuccessListener { location : Location? ->
+            .addOnSuccessListener { location: Location? ->
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
                     lLatitude = location.getLatitude();
                     lLongitude = location.getLongitude();
                 }
                 var onTheMap = LatLng(lLatitude, lLongitude)
-                mMap.addMarker(MarkerOptions().position(onTheMap).title("You are Here"))
+                mMap.addMarker(
+                    MarkerOptions().position(onTheMap).title("You are Here").icon(
+                        BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+                    )
+                )
                 val zoomLevel = 19.0f //This goes up to 21
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(onTheMap, zoomLevel))
             }
-        // Add a marker in Sydney and move the camera
-        //val sydney = LatLng(-34.0, 151.0)
-        //mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }*/
-    private fun getLocation(){
-        try {
-            locationManager?.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER,
-                0L,
-                0f,
-                locationListener
-            )
-        } catch(ex: SecurityException) {
-            //nothing
-        }
     }
 }

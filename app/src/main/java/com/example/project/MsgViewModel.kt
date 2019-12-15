@@ -115,9 +115,6 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
             return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
     }
-    fun onRequestMessages() {
-        getAll()
 
-    }
 
 }
