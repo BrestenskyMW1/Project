@@ -1,7 +1,6 @@
 package com.example.project
 
 import android.app.Application
-import android.location.Location
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -12,11 +11,6 @@ import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import com.example.android.trackmysleepquality.database.MessageDatabaseDao
 import com.example.android.trackmysleepquality.database.MessageStore
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,7 +22,10 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
     private var msg = MutableLiveData<MessageStore?>()
     private var msgLat = 41.1553489
     private var msgLon = -80.0787486
-    //private val msgs = database.getAllMessages()
+    private val msgs = database.getAllMessages()
+    val msgsString = Transformations.map(msgs) { msgs ->
+        formatMessages(msgs, application.resources)
+    }
 
 
     init {
@@ -97,16 +94,18 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
         viewModelJob.cancel()
     }
 
-    fun formatNights(messages: List<MessageStore>, resources: Resources): Spanned {
+    fun formatMessages(messages: List<MessageStore>, resources: Resources): Spanned {
         val sb = StringBuilder()
         sb.apply {
             append(resources.getString(R.string.title))
             messages.forEach {
                 append("<br>")
-                append(resources.getString(R.string.example_message))
-                append("\t${convertLongToDateString(it.date)}<br>")
-                append("\t" + resources.getString(R.string.example_lat)+
-                        resources.getString(R.string.example_long) + "<br>")
+                append("<h3>" + it.message + "</h3>")
+                val date = Date(it.date)
+                val format = SimpleDateFormat("MM.dd.yyyy HH:mm")
+                append("\t${format.format(date)}<br>")
+                append("\t<b>Latitude: " + it.latitude + "</b><br>"+
+                        "<b> Longitude:"+ it.longitude + "</b><br>")
             }
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
