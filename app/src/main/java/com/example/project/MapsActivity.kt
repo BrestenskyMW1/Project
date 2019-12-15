@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -66,7 +68,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if(msgViewModel.msgs.value != null) {
             for (curMsg in msgViewModel.msgs.value!!) {
                 val msgLoc = LatLng(curMsg.latitude, curMsg.longitude)
-                val displayMsg = "${curMsg.message} : ${curMsg.date}"
+                val date = Date(curMsg.date)
+                val format = SimpleDateFormat("MM.dd.yyyy HH:mm")
+                val displayMsg = "${curMsg.message} : ${format.format(date)}"
                 mMap.addMarker(MarkerOptions().position(msgLoc).title(displayMsg))
             }
         } else {
