@@ -24,4 +24,11 @@
     <string name="example_entry_text_2">Man I wish we had android today :/</string>
     <string name="example_entry_date_1">11/19/2019</string>
     <string name="example_entry_date_2">11/20/2019</string>
+
+    <!--stuff for scroll view in main activity-->
+    <string name="example_message"><![CDATA[<h3>Example Message</h3>]]></string>
+    <string name="example_date"><![CDATA[<b>00/00/0000</b]]></string>
+    <string name="example_lat"><![CDATA[<b>Lat: </b>]]></string>
+    <string name="example_long"><![CDATA[<b>Long: </b>]]></string>
+
 </resources>

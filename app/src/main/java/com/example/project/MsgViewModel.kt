@@ -1,6 +1,12 @@
 package com.example.project
 
+import android.annotation.SuppressLint
 import android.app.Application
+import android.content.res.Resources
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
+import androidx.core.text.HtmlCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -75,4 +81,31 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
         super.onCleared()
         viewModelJob.cancel()
     }
+
+    fun formatNights(messages: List<MessageStore>, resources: Resources): Spanned {
+        val sb = StringBuilder()
+        sb.apply {
+            append(resources.getString(R.string.title))
+            messages.forEach {
+                append("<br>")
+                append(resources.getString(R.string.example_message))
+                append("\t${convertLongToDateString(it.date)}<br>")
+                append("\t" + resources.getString(R.string.example_lat)+
+                        resources.getString(R.string.example_long) + "<br>")
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
+        } else {
+            return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun convertLongToDateString(systemTime: Long): String {
+        return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm")
+            .format(systemTime).toString()
+    }
+
+
 }

@@ -36,23 +36,15 @@
                 android:text="Delete all Messages"
                 android:textAlignment="center" />
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="581dp"
-                android:background="#007A7A7A"
-                android:orientation="vertical">
+                android:layout_height="529dp">
 
-                <Space
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="20dp" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="20dp" />
-
-            </LinearLayout>
+                    android:orientation="vertical" />
+            </ScrollView>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/navigation"
