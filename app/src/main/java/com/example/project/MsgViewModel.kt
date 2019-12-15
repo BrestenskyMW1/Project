@@ -9,6 +9,7 @@ import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.LiveData
 import com.example.android.trackmysleepquality.database.MessageDatabaseDao
 import com.example.android.trackmysleepquality.database.MessageStore
 import kotlinx.coroutines.*
@@ -22,7 +23,7 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
     private var msg = MutableLiveData<MessageStore?>()
     private var msgLat = 41.1553489
     private var msgLon = -80.0787486
-    private val msgs = database.getAllMessages()
+    val msgs = database.getAllMessages()
     val msgsString = Transformations.map(msgs) { msgs ->
         formatMessages(msgs, application.resources)
     }
@@ -114,4 +115,9 @@ class MsgViewModel(val database: MessageDatabaseDao, application: Application) :
             return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
     }
+    fun onRequestMessages() {
+        getAll()
+
+    }
+
 }
