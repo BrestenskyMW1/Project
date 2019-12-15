@@ -12,11 +12,6 @@ import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import com.example.android.trackmysleepquality.database.MessageDatabaseDao
 import com.example.android.trackmysleepquality.database.MessageStore
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
