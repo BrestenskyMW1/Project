@@ -23,9 +23,6 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var msgViewModel : MsgViewModel
-    //private lateinit var fusedLocationClient: FusedLocationProviderClient
-    //private lateinit var locationCallback: LocationCallback
-    //private lateinit var locationRequest: LocationRequest
     private var locationManager : LocationManager? = null
     //define the listener
     private val locationListener: LocationListener = object : LocationListener {
