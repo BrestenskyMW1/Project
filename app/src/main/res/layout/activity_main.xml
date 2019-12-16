@@ -8,61 +8,61 @@
             type= "com.example.project.MsgViewModel" />
     </data>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/Message_Entry"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/temp_text"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/Message_Entry"
+        <Button
+            android:id="@+id/MessageSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/submit_button" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Delete all Messages"
+            android:textAlignment="center" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+
+            <TextView
+                android:id="@+id/messagesGoHere"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/temp_text"
-                android:inputType="textPersonName" />
-
-            <Button
-                android:id="@+id/MessageSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/submit_button" />
-
-            <Button
-                android:id="@+id/deleteButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Delete all Messages"
+                android:text="@{msgViewModel.msgsString}"
                 android:textAlignment="center" />
+        </ScrollView>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="529dp">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="?android:attr/windowBackground"
+            android:foregroundGravity="bottom|center_vertical"
+            android:layoutMode="clipBounds"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
 
-                <TextView
-                    android:id="@+id/messagesGoHere"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{msgViewModel.msgsString}"
-                    android:textAlignment="center" />
-            </ScrollView>
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
-                android:background="?android:attr/windowBackground"
-                android:foregroundGravity="bottom|center_vertical"
-                android:layoutMode="clipBounds"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:menu="@menu/bottom_nav_menu" />
-
-        </LinearLayout>
-
+    </LinearLayout>
 </layout>
