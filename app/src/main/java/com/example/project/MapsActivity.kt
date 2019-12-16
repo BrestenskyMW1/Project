@@ -1,16 +1,20 @@
 package com.example.project
 
 import android.Manifest
+import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.core.app.ActivityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.android.trackmysleepquality.database.MessageDatabase
 import com.example.android.trackmysleepquality.database.MessageStore
+import com.example.project.databinding.ActivityMapsBinding
 import com.google.android.gms.common.util.CollectionUtils.listOf
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -23,11 +27,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private lateinit var binding : ActivityMapsBinding
     private lateinit var mMap: GoogleMap
     private lateinit var msgViewModel : MsgViewModel
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -36,7 +42,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         val application = requireNotNull(this).application
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_maps)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_maps)
         val dataSource= MessageDatabase.getInstance(application).msgDatabaseDao
         val viewModelFactory= MsgViewModelFactory(dataSource, application)
         msgViewModel= ViewModelProviders.of(
@@ -51,6 +57,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        val botNav : BottomNavigationView = findViewById(R.id.navigation)
+        botNav.selectedItemId = R.id.navigation_map
+        botNav.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener{
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                when (item.getItemId()) {
+                    R.id.navigation_home -> {
+                        val a = Intent(this@MapsActivity, MainActivity::class.java)
+                        startActivity(a)
+                    }
+                    R.id.navigation_map -> {
+                    }
+                    R.id.navigation_game -> {
+                        val b = Intent(this@MapsActivity, MinigameActivity::class.java)
+                        startActivity(b)
+                    }
+                }
+                return false
+            }
+        })
+        botNav.selectedItemId = R.id.navigation_map
     }
 
     /**
