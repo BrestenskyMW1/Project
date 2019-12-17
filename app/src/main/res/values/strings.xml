@@ -12,8 +12,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="map_button_text">Map View</string>
+
+
     <string name="game_button_text">Minigame</string>
     <string name="minigame_text">Let the Games Begin!</string>
+    <string name="move_orders">\nLook out for Toast!\nWait for it to go away.\n\nThen Gesture Here!</string>
+    <string name="start">Start</string>
+
     <string name="temp_text">Enter New Message</string>
     <string name="submit_button">Submit</string>
     <string name="title_activity_bottom_nav">BottomNav</string>

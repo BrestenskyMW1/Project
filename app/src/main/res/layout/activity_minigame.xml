@@ -3,33 +3,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/gameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center|center_vertical"
-            android:layout_marginTop="30sp"
-            android:layout_weight="1"
-            android:text="@string/minigame_text"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+        android:background="#82A4C4">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_marginStart="0dp"
+            android:layout_marginTop="300dp"
             android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
             android:background="?android:attr/windowBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/bottom_nav_menu" />
-    </LinearLayout>
+            app:menu="@menu/bottom_nav_menu">
 
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        <TextView
+            android:id="@+id/gameTitle"
+            android:layout_width="277dp"
+            android:layout_height="89dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="false"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="30sp"
+            android:layout_marginEnd="67dp"
+            android:text="@string/minigame_text"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/orderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gameTitle"
+            android:layout_marginTop="15dp"
+            android:height="350dp"
+            android:background="#FFFFFF"
+            android:text="@string/move_orders"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/orderText"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="71dp"
+            android:layout_marginEnd="145dp"
+            android:layout_marginBottom="126dp"
+            android:shadowColor="#3F51B5"
+            android:text="@string/start" />
+    </RelativeLayout>
 
 </layout>
