@@ -1,93 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
+
+    <data>
+        <variable
+            name="msgViewModel"
+            type= "com.example.project.MsgViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/Message_Entry"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/temp_text"
+            android:inputType="textPersonName" />
 
-            <Button
-                android:id="@+id/mapButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="sendMessage"
-                android:text="@string/map_button_text" />
-
-            <Button
-                android:id="@+id/gameButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="toGame"
-                android:text="@string/game_button_text" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#007A7A7A"
-                android:orientation="vertical">
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="20dp" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#D6D6D6"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="11/20/2019"
-                    android:textAlignment="textStart"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EBEBEB"
-                    android:text="Man I wish we had android today :/"
-                    android:textAlignment="textStart"
-                    android:textSize="24sp" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="20dp" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#D6D6D6"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="11/19/2019"
-                    android:textAlignment="textStart"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EBEBEB"
-                    android:text="Wow I love Dr. Hutchin's android class :D"
-                    android:textAlignment="textStart"
-                    android:textSize="24sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navView"
+        <Button
+            android:id="@+id/MessageSave"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/navigation_menu" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/submit_button" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Delete all Messages"
+            android:textAlignment="center" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+
+            <TextView
+                android:id="@+id/messagesGoHere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{msgViewModel.msgsString}"
+                android:textAlignment="center" />
+        </ScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="?android:attr/windowBackground"
+            android:foregroundGravity="bottom|center_vertical"
+            android:layoutMode="clipBounds"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+
+
+    </LinearLayout>
 </layout>

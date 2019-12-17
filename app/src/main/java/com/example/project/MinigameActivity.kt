@@ -1,14 +1,17 @@
 package com.example.project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.GestureDetector
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.MotionEvent.actionToString
 import androidx.core.view.MotionEventCompat
 import androidx.databinding.DataBindingUtil
 import com.example.project.databinding.ActivityMinigameBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MinigameActivity : AppCompatActivity() {
 
@@ -18,8 +21,26 @@ class MinigameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_minigame)
-
-
+        val botNav : BottomNavigationView = findViewById(R.id.navigation)
+        botNav.selectedItemId = R.id.navigation_game
+        botNav.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener{
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                when (item.getItemId()) {
+                    R.id.navigation_game -> {
+                    }
+                    R.id.navigation_home -> {
+                        val a = Intent(this@MinigameActivity, MainActivity::class.java)
+                        startActivity(a)
+                    }
+                    R.id.navigation_map -> {
+                        val b = Intent(this@MinigameActivity, MapsActivity::class.java)
+                        startActivity(b)
+                    }
+                }
+                return false
+            }
+        })
+        botNav.selectedItemId = R.id.navigation_game
     }
 
     // This example shows an Activity, but you would use the same approach if
