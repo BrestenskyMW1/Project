@@ -35,5 +35,7 @@
     <string name="example_date"><![CDATA[<b>00/00/0000</b]]></string>
     <string name="example_lat"><![CDATA[<b>Lat: </b>]]></string>
     <string name="example_long"><![CDATA[<b>Long: </b>]]></string>
+    <string name="channel_name">NotificationChannel</string>
+    <string name="channel_description">A channel for our one notification</string>
 
 </resources>
