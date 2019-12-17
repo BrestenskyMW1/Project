@@ -18,6 +18,7 @@
     <string name="minigame_text">Let the Games Begin!</string>
     <string name="move_orders">\nLook out for Toast!\nWait for it to go away.\n\nThen Gesture Here!</string>
     <string name="start">Start</string>
+    <string name="reset">Reset</string>
 
     <string name="temp_text">Enter New Message</string>
     <string name="submit_button">Submit</string>
@@ -37,5 +38,4 @@
     <string name="example_long"><![CDATA[<b>Long: </b>]]></string>
     <string name="channel_name">NotificationChannel</string>
     <string name="channel_description">A channel for our one notification</string>
-
 </resources>

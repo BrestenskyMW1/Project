@@ -51,6 +51,9 @@ class MinigameActivity : AppCompatActivity() {
         })
         botNav.selectedItemId = R.id.navigation_game
 
+        binding.resetButton.isEnabled = false
+        binding.resetButton.setOnClickListener { resetGame() }
+
         binding.startButton.setOnClickListener { startGame(3) }
     }
 
@@ -93,11 +96,10 @@ class MinigameActivity : AppCompatActivity() {
         //Action has ended, 1 = POINTER_UP
         if (actionList.last() == 1 && gameOn) {
             //Grab action next to last
-            val lastAction = actionList[actionList.lastIndex-1]
             //Log.d("The-Minigame", "Last Action: $lastAction")
 
             //Add Gesture to gestureList
-            when (lastAction) {
+            when (actionList[actionList.lastIndex-1]) {
                 0 -> gestureList.add("Tap")
                 2 -> gestureList.add("Swipe")
                 6 -> gestureList.add("MultiTouch")
@@ -137,18 +139,11 @@ class MinigameActivity : AppCompatActivity() {
         }
     }
 
-    private fun gameOver() {
-        gameOn = false
-        binding.gameTitle.text = "Game Over"
-        binding.orderText.text = "\nThe Asked Pattern was:\n$instructionList\n\nYour Pattern was: \n$gestureList"
-        instructionList.clear()
-        gestureList.clear()
-        actionList.clear()
-    }
-
     private fun startGame(numActions: Int) {
         gameOn = true
+        binding.resetButton.isEnabled = false
         binding.gameTitle.text = "Let the Games Begin!"
+        binding.orderText.text  = "\nLook out for Toast!\nWait for it to go away.\n\nThen Gesture Here!"
         val moves = listOf("Tap", "Swipe", "MultiTouch")
         var instructions = ""
         //Create initial list
@@ -178,6 +173,25 @@ class MinigameActivity : AppCompatActivity() {
         //Log.d("The-Minigame", "Next list: $instructions")
         //Set display text to instructions
         Toast.makeText(this, instructions, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun gameOver() {
+        gameOn = false
+
+        binding.gameTitle.text = "Game Over"
+        binding.orderText.text = "\nThe Asked Pattern was:\n$instructionList\n\nYour Pattern was: \n$gestureList"
+
+        instructionList.clear()
+        gestureList.clear()
+        actionList.clear()
+
+        binding.resetButton.isEnabled = true
+    }
+
+    private fun resetGame() {
+        binding.startButton.isEnabled = true
+        binding.resetButton.isEnabled = false
+
     }
 
 }
