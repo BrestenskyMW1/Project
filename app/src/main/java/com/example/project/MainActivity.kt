@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity(){
             Toast.makeText(this@MainActivity, textEntry.getText().toString(), Toast.LENGTH_SHORT).show()
             getLocation()
             msgViewModel.newMessage(textEntry.getText().toString())
+            textEntry.setText("");
         }
 
         //delete all messages
